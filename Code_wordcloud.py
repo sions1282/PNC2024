@@ -1,9 +1,9 @@
-'''
+"""
 Word Cloud
 
 1. Pay attention to file names, fonts, and file paths.
 2. Use the code after setting up the virtual environment and downloading the packages. (pip install pandas matplotlib wordcloud requests)
-'''
+"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ file_path = 'your_path/.csv' # Change to the desired media raw data (your_path~.
 data = pd.read_csv(file_path)
 
 # Stopwords settings and application
-stopwords_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR8bE6luF0HysW3WcfPGD3YCuQKX4KBl53pj5pckX_xzdIM2HI1NKRebQVnabmN9DrQrY-CwHD0R7nh/pub?gid=712098719&single=true&output=csv'
+stopwords_url = 'your_path/stopwords.csv'  # Replace with your stopwords file path (your_path)
 stopwords_data = pd.read_csv(stopwords_url)
 stopwords = stopwords_data['불용어'].tolist()
 filtered_data = data[~data['단어'].isin(stopwords)]
@@ -82,6 +82,6 @@ plt.axis('off')
 plt.text(0.5, 1.1, 'Word Cloud', fontsize=20, ha='center', va='center', transform=plt.gca().transAxes, fontproperties=fm.FontProperties(fname=font_path))
 
 output_path = 'your_path/WordCloud.png'  # Change the output path (your_path)
-plt.savefig(output_path, format='png', dpi=300, bbox_inches='tight', transparent=True)  # 파일 형식, 해상도 및 여백 설정
+plt.savefig(output_path, format='png', dpi=300, bbox_inches='tight', transparent=True)
 
 plt.show()
